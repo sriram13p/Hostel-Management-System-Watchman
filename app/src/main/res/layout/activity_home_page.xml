@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomePage">
+
+    <TextView
+        android:id="@+id/nameholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Hi Hari"
+        android:textSize="24dp"
+        android:fontFamily="@font/poppinsmedium"
+        />
+
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/nameholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="6dp"
+        android:text="Welcome Back!"
+        android:textColor="@color/red"
+        android:textSize="28dp"
+        android:fontFamily="@font/poppinsbold"
+        />
+    <LinearLayout
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/out"
+            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:text="OUT"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_height="100dp">
+        </Button>
+        <Button
+            android:id="@+id/in"
+            android:layout_marginTop="10dp"
+            android:text="IN"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+        </Button>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:background="#D6EBFA"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <Button
+                android:background="#D6EBFA"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_lock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lock"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
