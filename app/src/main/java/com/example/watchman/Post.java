@@ -49,7 +49,7 @@ public class Post extends AppCompatActivity {
                     String[] data = new String[2];
                     data[0] = sp[1];
                     data[1] = eid;
-                    String url="http://"+i.getIp()+"/Termpaper/putDataTest.php";
+                    String url="http://"+i.getIp()+"/putDataTest.php";
                     PutData putData = new PutData(url, "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
@@ -93,7 +93,7 @@ public class Post extends AppCompatActivity {
                     String[] data = new String[2];
                     data[0] = sp[1];
                     data[1] = eid;
-                    String url="http://"+i.getIp()+"/Termpaper/putDataTest1.php";
+                    String url="http://"+i.getIp()+"/putDataTest1.php";
                     PutData putData = new PutData(url, "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
