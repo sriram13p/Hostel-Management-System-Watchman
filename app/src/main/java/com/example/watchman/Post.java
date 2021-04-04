@@ -1,11 +1,16 @@
 package com.example.watchman;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -14,21 +19,21 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Post extends AppCompatActivity {
-    String eid,fun,str;
+    String eid,fun,str,phone,msg;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         IP i=new IP();
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
         Bundle bundlePost=new Bundle();
         Bundle bundle= getIntent().getExtras();
         eid=bundle.getString("id", "Default");
         fun=bundle.getString("fun", "Default");
         str=bundle.getString("str", "Default");
         String[] sp=str.split(",",3);
+        phone=sp[2];
         System.out.println(str);
         bundlePost.putString("id",eid);
         bundlePost.putString("name",bundle.getString("name", "Default"));
@@ -57,8 +62,13 @@ public class Post extends AppCompatActivity {
                             //System.out.println(result+"-------------------------------------------------------------------------------------------------------------------------");
                             if(result.equals("success"))
                             {
-                                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(getApplicationContext(),HomePage.class);
+                                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                                LocalDateTime now = LocalDateTime.now();
+                                msg="Your child left the campus at "+dtf.format(now);
+                                bundlePost.putString("phone",phone);
+                                bundlePost.putString("msg",msg);
+
+                                Intent intent=new Intent(getApplicationContext(),SMS.class);
                                 intent.putExtras(bundlePost);
                                 startActivity(intent);
 
@@ -100,8 +110,13 @@ public class Post extends AppCompatActivity {
                             String result = putData.getResult();
                             if(result.equals("success"))
                             {
-                                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(getApplicationContext(),HomePage.class);
+                                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                                LocalDateTime now = LocalDateTime.now();
+                                msg="Your child came back to campus at "+dtf.format(now);
+                                bundlePost.putString("phone",phone);
+                                bundlePost.putString("msg",msg);
+
+                                Intent intent=new Intent(getApplicationContext(),SMS.class);
                                 intent.putExtras(bundlePost);
                                 startActivity(intent);
 
@@ -123,4 +138,5 @@ public class Post extends AppCompatActivity {
         }
 
     }
+
 }

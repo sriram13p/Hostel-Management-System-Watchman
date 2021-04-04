@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Watchman"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Post"></activity>
+        <activity android:name=".SMS"></activity>
+        <activity android:name=".Post" />
         <activity android:name=".Scanner" />
         <activity android:name=".HomePage" />
         <activity android:name=".LoginActivity" />
