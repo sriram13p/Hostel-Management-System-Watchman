@@ -34,7 +34,7 @@ public class Post extends AppCompatActivity {
         str=bundle.getString("str", "Default");
         String[] sp=str.split(",",3);
         phone=sp[2];
-        System.out.println(str);
+      //  System.out.println(str);
         bundlePost.putString("id",eid);
         bundlePost.putString("name",bundle.getString("name", "Default"));
         if(fun.equals("out"))

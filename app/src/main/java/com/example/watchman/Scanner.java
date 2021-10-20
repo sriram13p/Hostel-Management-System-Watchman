@@ -104,14 +104,14 @@ public class Scanner extends AppCompatActivity {
                         public void run() {
 
                             String k=barcodes.valueAt(0).displayValue;
-                            System.out.println(k);
+                          //  System.out.println(k);
                             if(k.length()>13)
                             {
                                 if(k.charAt(0)=='H' && k.charAt(1)=='M' && k.charAt(2)=='S')
                                 {
                                     intentData = barcodes.valueAt(0).displayValue;
                                     bundleScanner.putString("str",intentData);
-                                    Intent intent=new Intent(getApplicationContext(),Post.class);
+                                    Intent intent=new Intent(getApplicationContext(),Display.class);
                                     intent.putExtras(bundleScanner);
                                     startActivity(intent);
                                     finish();
